@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "zfE6e0r6heMXH06FWerCMwr5coie0Ge121x46Tw9nAvQVwtmCNPoV6cfGJqzhIu6POIUR6Ip3G+7E5FN4xMs8g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kobis\\Dropbox\\Moveo\\Doctor Appointment System\\DoctorAppointment.ConsoleUI\\DoctorAppointment.ConsoleUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.15\\microsoft.entityframeworkcore.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.15\\microsoft.entityframeworkcore.abstractions.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.15\\microsoft.entityframeworkcore.analyzers.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\3.1.15\\microsoft.entityframeworkcore.inmemory.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.15\\microsoft.extensions.caching.abstractions.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.15\\microsoft.extensions.caching.memory.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.15\\microsoft.extensions.configuration.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.15\\microsoft.extensions.configuration.abstractions.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.15\\microsoft.extensions.configuration.binder.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.15\\microsoft.extensions.dependencyinjection.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.15\\microsoft.extensions.dependencyinjection.abstractions.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.logging\\3.1.15\\microsoft.extensions.logging.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.15\\microsoft.extensions.logging.abstractions.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.options\\3.1.15\\microsoft.extensions.options.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.15\\microsoft.extensions.primitives.3.1.15.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
+    "C:\\Users\\kobis\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

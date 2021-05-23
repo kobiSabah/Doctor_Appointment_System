@@ -1,0 +1,9 @@
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\obj\Debug\netstandard2.0\DoctorAppointment.Core.AssemblyInfoInputs.cache
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\obj\Debug\netstandard2.0\DoctorAppointment.Core.AssemblyInfo.cs
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\obj\Debug\netstandard2.0\DoctorAppointment.Core.csproj.CoreCompileInputs.cache
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\bin\Debug\netstandard2.0\DoctorAppointment.Core.deps.json
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\bin\Debug\netstandard2.0\DoctorAppointment.Core.dll
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\bin\Debug\netstandard2.0\DoctorAppointment.Core.pdb
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\obj\Debug\netstandard2.0\DoctorAppointment.Core.dll
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\obj\Debug\netstandard2.0\DoctorAppointment.Core.pdb
+C:\Users\kobis\Dropbox\Moveo\Doctor Appointment System\DoctorAppointment.Core\obj\Debug\netstandard2.0\DoctorAppointment.Core.csprojAssemblyReference.cache
