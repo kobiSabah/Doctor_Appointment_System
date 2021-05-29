@@ -27,7 +27,7 @@ namespace DoctorAppointment.ConsoleUI
         public async Task<Appointment> GetAppointmentFormAsync()
         {
             await showFormAsync();
-            return new Appointment 
+            return new Appointment
             {
                 AppointmentTime = AppointmentTime,
                 DoctorId = DoctorId,
@@ -38,7 +38,7 @@ namespace DoctorAppointment.ConsoleUI
 
         private async Task showFormAsync()
         {
-            
+
             Console.WriteLine(@"
 Welcome to application form
 First you need to pick a doctor
@@ -51,8 +51,8 @@ Would you like to filter the doctors by availability Y/N ?");
             } while (!validateFilterinput(input));
 
             ApiResponse<List<Doctor>> apiResponse = input == "Y" ? await r_ClinicService.GetAllDoctorsAsync(true) : await r_ClinicService.GetAllDoctorsAsync(false);
-            
-            if(apiResponse.IsSuccess)
+
+            if (apiResponse.IsSuccess)
             {
                 List<Doctor> doctors = apiResponse.Context;
                 int index = 1;
@@ -83,7 +83,7 @@ You are in the queue.");
                     Console.WriteLine(error);
                 }
             }
-            
+
         }
 
         private bool validateFilterinput(string input)

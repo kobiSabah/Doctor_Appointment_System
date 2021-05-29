@@ -1,4 +1,5 @@
 ﻿using AppointmentSystem.WebServer.Comfigurations;
+using AppointmentSystem.WebServer.Contracts.V1.Requests;
 using AppointmentSystem.WebServer.Contracts.V1.Responses;
 using AppointmentSystem.WebServer.Models;
 using AppointmentSystem.WebServer.Services;
@@ -63,11 +64,11 @@ namespace AppointmentSystem.WebServer.Controllers.V1
         /// <param name="doctorId">Doctor id</param>
         /// <param name="isAvailable">new Availability</param>
         /// <returns></returns>
-        [HttpPatch(ApiRoutes.Doctors.Update)]
-        public async Task<IActionResult> UpdateDoctorAvailability(Guid doctorId, bool isAvailable)
+        [HttpPut(ApiRoutes.Doctors.Update)]
+        public async Task<IActionResult> UpdateDoctorAvailability(UpdateDoctorAvailabiltyRequest request)
         {
-            await m_DoctorService.UpdateDoctorAvailability(doctorId, isAvailable);
-            
+            await m_DoctorService.UpdateDoctorAvailability(request.doctorId, request.isAvailable);
+
             return Ok();
         }
 

@@ -19,7 +19,7 @@ namespace AppointmentSystem.WebServer.Services
         }
         public async Task<IEnumerable<User>> GetAllPatients()
         {
-            return await m_UserManager.Users.Where(u => u.UserType.Equals(Enum.GetName(typeof(eUserType), eUserType.Patieon))).ToListAsync();
+            return await m_UserManager.Users.Where(u => u.UserType.Equals(Enum.GetName(typeof(eUserType), eUserType.Patient))).ToListAsync();
         }
 
         public async Task<User> GetPatientById(Guid patientId)

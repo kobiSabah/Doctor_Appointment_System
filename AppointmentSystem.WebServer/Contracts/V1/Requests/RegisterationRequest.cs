@@ -1,5 +1,4 @@
-﻿using AppointmentSystem.WebServer.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AppointmentSystem.WebServer.Contracts.V1.Requests
 {

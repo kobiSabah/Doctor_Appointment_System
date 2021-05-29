@@ -1,4 +1,5 @@
 ﻿using AppointmentSystem.WebServer.Comfigurations;
+using AppointmentSystem.WebServer.Contracts.V1.Requests;
 using AppointmentSystem.WebServer.Models;
 using AppointmentSystem.WebServer.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +41,7 @@ namespace AppointmentSystem.WebServer.Controllers.V1
         [HttpGet(ApiRoutes.WaitingList.GetAll)]
         public async Task<IActionResult> GetAllAppointments(Guid doctorId)
         {
-           IEnumerable<Appointment> appointments = await waitingListService.GetAllUpcomeingAppointment(doctorId);
+            IEnumerable<Appointment> appointments = await waitingListService.GetAllUpcomeingAppointment(doctorId);
             return Ok(appointments);
         }
 
@@ -52,9 +53,9 @@ namespace AppointmentSystem.WebServer.Controllers.V1
         /// <param name="appointmentDuration"></param>
         /// <returns></returns>
         [HttpPost(ApiRoutes.WaitingList.Add)]
-        public async Task<IActionResult> AddToWaitingList(Guid doctorId, Guid patientId, string appointmentDuration)
+        public async Task<IActionResult> AddToWaitingList([FromBody]AddToWaitingListRequest request)
         {
-            await waitingListService.AddToWatingList(doctorId, patientId, appointmentDuration);
+            await waitingListService.AddToWatingList(request.doctorId, request.patientId, request.appointmentDuration);
             return Ok();
         }
 

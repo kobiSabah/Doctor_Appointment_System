@@ -7,7 +7,7 @@ namespace AppointmentSystem.WebServer
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions options)
-            :base(options)
+            : base(options)
         {
 
         }

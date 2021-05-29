@@ -29,7 +29,7 @@ namespace DoctorAppointment.Core.Services
                 string result = await response.Content.ReadAsStringAsync();
                 apiResponse.IsSuccess = response.IsSuccessStatusCode;
 
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     apiResponse.Context = JsonConvert.DeserializeObject<LoginCredentials>(result);
 

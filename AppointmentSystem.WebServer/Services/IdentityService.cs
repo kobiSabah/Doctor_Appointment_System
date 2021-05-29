@@ -23,7 +23,7 @@ namespace AppointmentSystem.WebServer.Services
             {
                 return new AuthenticationResult
                 {
-                    ErrorMessage = new [] { "The user already exist" }
+                    ErrorMessage = new[] { "The user already exist" }
                 };
             }
             else
@@ -71,7 +71,7 @@ namespace AppointmentSystem.WebServer.Services
                     Success = true,
                     Id = user.Id,
                     UserType = user.UserType
-                    
+
                 };
             }
         }
@@ -92,7 +92,7 @@ namespace AppointmentSystem.WebServer.Services
             // Check if the password is valid 
             bool isValidPassword = await m_UserManager.CheckPasswordAsync(user, password);
 
-            if(!isValidPassword)
+            if (!isValidPassword)
             {
                 return new AuthenticationResult
                 {

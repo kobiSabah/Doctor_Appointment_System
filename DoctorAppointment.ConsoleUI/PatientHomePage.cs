@@ -23,7 +23,7 @@ namespace DoctorAppointment.ConsoleUI
         }
 
         public async Task show()
-        { 
+        {
             await showOptions();
         }
 
@@ -73,7 +73,7 @@ namespace DoctorAppointment.ConsoleUI
             int userChoice;
             bool isvalid = int.TryParse(input, out userChoice);
 
-            if(isvalid)
+            if (isvalid)
             {
                 return userChoice > 0 && userChoice <= 3;
             }
@@ -84,7 +84,7 @@ namespace DoctorAppointment.ConsoleUI
         private async Task createAppointment()
         {
             AppointmentForm newAppointment = new AppointmentForm(m_PatientId);
-           
+
             await r_ScheduleService.AddAppointmentAsync(await newAppointment.GetAppointmentFormAsync());
         }
 
@@ -92,11 +92,11 @@ namespace DoctorAppointment.ConsoleUI
         {
             Appointment appointmetToCancel = await getAllAppointmentsAsync();
 
-            if(appointmetToCancel != null)
+            if (appointmetToCancel != null)
             {
                 ApiResponse<object> apiResponse = await r_ScheduleService.RemoveFromWaitingList(appointmetToCancel.Id);
 
-                if(!apiResponse.IsSuccess)
+                if (!apiResponse.IsSuccess)
                 {
                     foreach (string error in apiResponse.Errors)
                     {
@@ -159,7 +159,7 @@ Would you like to filter the doctors by availability Y/N ?");
             } while (!validateFilterinput(input));
 
             ApiResponse<List<Doctor>> apiResponse = input == "Y" ? await r_ClinicService.GetAllDoctorsAsync(true) : await r_ClinicService.GetAllDoctorsAsync(false);
-            if(apiResponse.IsSuccess)
+            if (apiResponse.IsSuccess)
             {
                 List<Doctor> doctors = apiResponse.Context;
                 int index = 1;
@@ -191,8 +191,12 @@ Would you like to filter the doctors by availability Y/N ?");
 
         private void OnAppointmentStart(object source, AppointmentEventArgs e)
         {
-            if(e.PatientId.Equals(m_PatientId))
-                Console.WriteLine($"Meeting with {e.PatientId} was started");
+            var currentColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
+            if (e.PatientId.Equals(m_PatientId))
+                Console.WriteLine($"Your Meeting is about to start.");
+
+            Console.ForegroundColor = currentColor;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace DoctorAppointment.Core.Models
+﻿using Newtonsoft.Json;
+
+namespace DoctorAppointment.Core.Models
 {
     /// <summary>
     /// Doctor class representation 
@@ -7,9 +9,10 @@
     {
         public Doctor()
         {
-            IsAvailable = true;
+
         }
 
+        [JsonProperty("isAvaliable")]
         public bool IsAvailable { get; set; }
 
         public override string ToString()

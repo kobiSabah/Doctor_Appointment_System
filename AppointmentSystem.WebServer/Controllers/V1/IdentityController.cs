@@ -29,7 +29,7 @@ namespace AppointmentSystem.WebServer.Controllers.V1
         [HttpPost(ApiRoutes.Identity.Register)]
         public async Task<IActionResult> Register([FromBody] RegisterationRequest registerationRequest)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(new AuthenticationBadRespone
                 {
@@ -38,14 +38,14 @@ namespace AppointmentSystem.WebServer.Controllers.V1
             }
             AuthenticationResult result = await m_IdentityService.RegisterAsync(
                 registerationRequest.Username,
-                registerationRequest.FirstName, 
+                registerationRequest.FirstName,
                 registerationRequest.LastName,
                 registerationRequest.Email,
                 registerationRequest.UserType,
                 registerationRequest.Password
                 );
 
-            if(!result.Success)
+            if (!result.Success)
             {
                 return BadRequest(new AuthenticationBadRespone
                 {

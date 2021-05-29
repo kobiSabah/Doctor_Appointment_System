@@ -43,7 +43,7 @@ namespace AppointmentSystem.WebServer.Controllers.V1
         {
             User patient = await m_PatientService.GetPatientById(patientId);
 
-            if(patient != null)
+            if (patient != null)
             {
                 return Ok(new PatientRespone
                 {

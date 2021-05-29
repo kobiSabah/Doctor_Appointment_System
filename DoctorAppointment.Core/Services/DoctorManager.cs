@@ -55,20 +55,22 @@ namespace DoctorAppointment.Core.Services
         public async Task StartAppointmentAsync(Appointment appointmentToStart)
         {
             ApiResponse<Doctor> response = await FindDoctorByIdAsync(appointmentToStart.DoctorId);
-            if(response.IsSuccess)
+            if (response.IsSuccess)
             {
                 Doctor doctor = response.Context;
                 if (doctor.IsAvailable)
                 {
                     await UpdateDoctorAvailabilityAsync(doctor.Id, false);
                     OnAppointmentStarted(appointmentToStart);
-                    await Task.Run(() =>
+
+                    Task.Run(() => 
                     {
                         Thread.Sleep(TimeSpan.Parse(appointmentToStart.AppointmentTime));
+                    }).GetAwaiter().OnCompleted(async () =>
+                    {
+                        await UpdateDoctorAvailabilityAsync(doctor.Id, true);
+                        OnDoctorAvailable(appointmentToStart.DoctorId);
                     });
-
-                    await UpdateDoctorAvailabilityAsync(doctor.Id, true);
-                    OnDoctorAvailable(appointmentToStart.DoctorId);
                 }
             }
         }
@@ -93,12 +95,12 @@ namespace DoctorAppointment.Core.Services
             {
                 string json = JsonConvert.SerializeObject(request);
                 StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
-
-                string urlRequest = "https://localhost:44350/api/v1/doctors/" + doctorId;
+                
+                string urlRequest = $"https://localhost:44350/api/v1/doctors/{doctorId}?isAvailable={isAvailable}";
                 HttpResponseMessage response = await httpClient.PutAsync(urlRequest, data);
                 apiResponse.IsSuccess = response.IsSuccessStatusCode;
 
-                if(!response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
                     apiResponse.Errors = new[] { "Something wrong" };
                 }
@@ -112,7 +114,7 @@ namespace DoctorAppointment.Core.Services
         /// <returns></returns>
         public async Task<ApiResponse<Doctor>> FindDoctorByIdAsync(string doctorId)
         {
-            ApiResponse<Doctor> apiResponse = new ApiResponse<Doctor>() ;
+            ApiResponse<Doctor> apiResponse = new ApiResponse<Doctor>();
 
             using (HttpClient httpClient = new HttpClient())
             {
@@ -120,7 +122,7 @@ namespace DoctorAppointment.Core.Services
                 HttpResponseMessage response = await httpClient.GetAsync(urlRequest);
                 apiResponse.IsSuccess = response.IsSuccessStatusCode;
 
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     apiResponse.Context = JsonConvert.DeserializeObject<Doctor>(result);
@@ -151,11 +153,11 @@ namespace DoctorAppointment.Core.Services
         protected virtual void OnAppointmentStarted(Appointment appointment)
         {
             if (AppointmentStarted != null)
-                AppointmentStarted(this, new AppointmentEventArgs() 
-                { 
+                AppointmentStarted(this, new AppointmentEventArgs()
+                {
                     AppointmentId = appointment.Id,
                     DoctorId = appointment.DoctorId,
-                    PatientId = appointment.PatientId 
+                    PatientId = appointment.PatientId
                 });
         }
     }

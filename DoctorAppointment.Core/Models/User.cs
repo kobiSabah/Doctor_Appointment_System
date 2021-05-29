@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DoctorAppointment.Core.Models
+﻿namespace DoctorAppointment.Core.Models
 {
     /// <summary>
     /// Base class for application users 

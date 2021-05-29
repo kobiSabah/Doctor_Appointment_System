@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DoctorAppointment.Core.Contracts.Responses
+﻿namespace DoctorAppointment.Core.Contracts.Responses
 {
     public class LoginCredentials
     {

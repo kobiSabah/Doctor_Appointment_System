@@ -3,6 +3,6 @@
     public enum eUserType
     {
         Doctor = 0,
-        Patieon = 1
+        Patient = 1
     }
 }

@@ -9,6 +9,7 @@ namespace DoctorAppointment.ConsoleUI
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.White;
             MainAsync().GetAwaiter().GetResult();
         }
 
@@ -39,7 +40,7 @@ namespace DoctorAppointment.ConsoleUI
             {
                 await clinic.StartWork(loginCredentials.Token);
                 DoctorHomePage homepage = new DoctorHomePage(loginCredentials.Token);
-                
+
                 await homepage.menu();
             }
             else

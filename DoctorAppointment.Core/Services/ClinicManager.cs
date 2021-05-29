@@ -22,7 +22,7 @@ namespace DoctorAppointment.Core.Services
         private ClinicManager()
         {
             scheduleManager = new ScheduleManager();
-            doctorManager =  DoctorManager.Instance;
+            doctorManager = DoctorManager.Instance;
         }
 
         public static ClinicManager Instance
@@ -56,15 +56,15 @@ namespace DoctorAppointment.Core.Services
             using (HttpClient httpClient = new HttpClient())
             {
                 HttpResponseMessage response = await httpClient.GetAsync("https://localhost:44350/api/v1/doctors");
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     apiRespone.IsSuccess = true;
                     string result = await response.Content.ReadAsStringAsync();
                     apiRespone.Context = JsonConvert.DeserializeObject<List<Doctor>>(result);
 
-                    if(apiRespone != null)
+                    if (apiRespone != null)
                     {
-                        if(filterByAvailability)
+                        if (filterByAvailability)
                         {
                             apiRespone.Context = apiRespone.Context.FindAll(d => d.IsAvailable);
                         }
@@ -94,7 +94,7 @@ namespace DoctorAppointment.Core.Services
                 HttpResponseMessage response = await httpClient.GetAsync(urlRequest);
                 apiResponse.IsSuccess = response.IsSuccessStatusCode;
 
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     List<Appointment> appointments = new List<Appointment>();
                     string result = await response.Content.ReadAsStringAsync();
@@ -105,14 +105,14 @@ namespace DoctorAppointment.Core.Services
                         ApiResponse<Patient> getPatientApiResponse = await GetPatientByIdAsync(appointment.PatientId);
                         apiResponse.IsSuccess = getPatientApiResponse.IsSuccess;
 
-                        if(getPatientApiResponse.IsSuccess)
+                        if (getPatientApiResponse.IsSuccess)
                             apiResponse.Context.Add(getPatientApiResponse.Context);
                         else
                             apiResponse.Errors = getPatientApiResponse.Errors;
                     }
                 }
                 else
-                   apiResponse.Errors = new[] { "Something wrong" };
+                    apiResponse.Errors = new[] { "Something wrong" };
             }
 
             return apiResponse;
@@ -156,7 +156,7 @@ namespace DoctorAppointment.Core.Services
         public async Task StartWork(string doctorId)
         {
             ApiResponse<ConcurrentQueue<Appointment>> apiResponse = await scheduleManager.GetUpcomingAppointmentsAsync(doctorId);
-            if(apiResponse.IsSuccess)
+            if (apiResponse.IsSuccess)
             {
                 ConcurrentQueue<Appointment> upcommingApoointmnets = apiResponse.Context;
                 if (upcommingApoointmnets != null)
@@ -183,7 +183,7 @@ namespace DoctorAppointment.Core.Services
                 HttpResponseMessage response = await httpClient.GetAsync(urlRequest);
                 apiResponse.IsSuccess = response.IsSuccessStatusCode;
 
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     apiResponse.Context = JsonConvert.DeserializeObject<List<Appointment>>(result);

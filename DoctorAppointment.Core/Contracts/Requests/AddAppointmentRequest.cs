@@ -5,8 +5,8 @@
     /// </summary>
     public class AddAppointmentRequest
     {
-        public string DoctorId { get; set; }
-        public string PatientId { get; set; }
-        public string AppointmentTime { get; set; }
+        public string doctorId { get; set; }
+        public string patientId { get; set; }
+        public string appointmentDuration { get; set; }
     }
 }

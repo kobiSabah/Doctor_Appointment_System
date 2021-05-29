@@ -38,7 +38,7 @@ What would you like to do ?
                 {
                     ApiResponse<List<Patient>> apiResponse = await r_ClinicManager.GetWatingListPatientsAsync(r_Id);
 
-                    if(apiResponse.IsSuccess)
+                    if (apiResponse.IsSuccess)
                     {
                         List<Patient> patients = apiResponse.Context;
                         Console.WriteLine(@"
@@ -67,12 +67,12 @@ What would you like to do ?
                     }
 
                 }
-                else if(input != "2")
+                else if (input != "2")
                 {
                     Console.WriteLine("invalid input. Try again.");
                 }
 
             }
-        }   
+        }
     }
 }

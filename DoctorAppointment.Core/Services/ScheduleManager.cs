@@ -22,7 +22,7 @@ namespace DoctorAppointment.Core.Services
         public ScheduleManager()
         {
             r_DoctorService.DoctorAvailable += OnDoctorAvailable;
-            r_DoctorService.AppointmentStarted += OnAppointmentStart;
+            r_DoctorService.AppointmentStarted += OnAppointmentStarted;
         }
 
         /// <summary>
@@ -33,24 +33,30 @@ namespace DoctorAppointment.Core.Services
         public async Task AddAppointmentAsync(Appointment appointmentToAdd)
         {
             ApiResponse<object> result = await CheckDoctorAvailabilityAsync(appointmentToAdd.DoctorId);
-            if(result.IsSuccess)
+            if (result.IsSuccess)
             {
                 if (!(bool)(result.Context))
+                {
                     await addToWaitingListAsync(appointmentToAdd);
+                }
                 else
+                {
                     await r_DoctorService.StartAppointmentAsync(appointmentToAdd);
+                }
             }
-            
+
         }
 
         /// <summary>
         /// Notify to the listeners that the appointment is about to start 
         /// </summary>
         /// <param name="patientId">patient id</param>
-        protected virtual void OnAppointmentStarted(string patientId)
+        protected async virtual void OnAppointmentStarted(object source, AppointmentEventArgs args)
         {
+            await RemoveFromWaitingList(args.AppointmentId);
+
             if (AppointmentStarted != null)
-                AppointmentStarted(this, new AppointmentEventArgs() { PatientId = patientId });
+                AppointmentStarted(this, new AppointmentEventArgs() { PatientId = args.PatientId });
         }
 
         /// <summary>
@@ -92,7 +98,7 @@ namespace DoctorAppointment.Core.Services
             if (m_UpcommingAppointments.IsEmpty)
             {
                 ApiResponse<ConcurrentQueue<Appointment>> response = await GetUpcomingAppointmentsAsync(e.DoctorId);
-                if(response.IsSuccess)
+                if (response.IsSuccess)
                 {
                     m_UpcommingAppointments = response.Context;
                 }
@@ -100,8 +106,7 @@ namespace DoctorAppointment.Core.Services
 
             if (!m_UpcommingAppointments.IsEmpty)
             {
-                Appointment appointment;
-                m_UpcommingAppointments.TryDequeue(out appointment);
+                m_UpcommingAppointments.TryDequeue(out Appointment appointment);
                 await r_DoctorService.StartAppointmentAsync(appointment);
             }
         }
@@ -122,7 +127,7 @@ namespace DoctorAppointment.Core.Services
                 HttpResponseMessage response = await httpClient.GetAsync(urlRequest);
                 apiResponse.IsSuccess = response.IsSuccessStatusCode;
 
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     doctor = JsonConvert.DeserializeObject<Doctor>(result);
@@ -147,10 +152,10 @@ namespace DoctorAppointment.Core.Services
             ApiResponse<object> apiResponse = new ApiResponse<object>();
 
             AddAppointmentRequest request = new AddAppointmentRequest
-            { 
-                AppointmentTime = appointmentToAdd.AppointmentTime,
-                DoctorId = appointmentToAdd.DoctorId,
-                PatientId = appointmentToAdd.PatientId
+            {
+                appointmentDuration = appointmentToAdd.AppointmentTime,
+                doctorId = appointmentToAdd.DoctorId,
+                patientId = appointmentToAdd.PatientId
             };
 
             using (HttpClient httpClient = new HttpClient())
@@ -174,11 +179,6 @@ namespace DoctorAppointment.Core.Services
             }
         }
 
-        private async void OnAppointmentStart(object source, AppointmentEventArgs e)
-        {
-            await RemoveFromWaitingList(e.AppointmentId);
-        }
-
         /// <summary>
         /// Cancel/ Remove patient appointment
         /// </summary>
@@ -194,7 +194,7 @@ namespace DoctorAppointment.Core.Services
                 HttpResponseMessage response = await httpClient.DeleteAsync(urlRequest);
                 apiResponse.IsSuccess = response.IsSuccessStatusCode;
 
-                if(!response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
                     apiResponse.Errors = new[] { "Something wrong" };
                 }
