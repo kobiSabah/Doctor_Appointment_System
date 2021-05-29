@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kobis\\OneDrive\\Documents\\GitHub\\Doctor_Appointment_System\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj": {}
+    "C:\\Users\\kobis\\OneDrive\\Desktop\\Doctor_Appointment_System-master\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kobis\\OneDrive\\Documents\\GitHub\\Doctor_Appointment_System\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj": {
+    "C:\\Users\\kobis\\OneDrive\\Desktop\\Doctor_Appointment_System-master\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kobis\\OneDrive\\Documents\\GitHub\\Doctor_Appointment_System\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj",
+        "projectUniqueName": "C:\\Users\\kobis\\OneDrive\\Desktop\\Doctor_Appointment_System-master\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj",
         "projectName": "AppointmentSystem.WebServer",
-        "projectPath": "C:\\Users\\kobis\\OneDrive\\Documents\\GitHub\\Doctor_Appointment_System\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj",
+        "projectPath": "C:\\Users\\kobis\\OneDrive\\Desktop\\Doctor_Appointment_System-master\\AppointmentSystem.WebServer\\AppointmentSystem.WebServer.csproj",
         "packagesPath": "C:\\Users\\kobis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kobis\\OneDrive\\Documents\\GitHub\\Doctor_Appointment_System\\AppointmentSystem.WebServer\\obj\\",
+        "outputPath": "C:\\Users\\kobis\\OneDrive\\Desktop\\Doctor_Appointment_System-master\\AppointmentSystem.WebServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kobis\\AppData\\Roaming\\NuGet\\NuGet.Config",

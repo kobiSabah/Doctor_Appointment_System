@@ -142,8 +142,7 @@ namespace DoctorAppointment.Core.Services
         /// <param name="doctorId"></param>
         protected virtual void OnDoctorAvailable(string doctorId)
         {
-            if (DoctorAvailable != null)
-                DoctorAvailable(this, new DoctorEventArgs() { DoctorId = doctorId });
+            DoctorAvailable?.Invoke(this, new DoctorEventArgs() { DoctorId = doctorId });
         }
 
         /// <summary>

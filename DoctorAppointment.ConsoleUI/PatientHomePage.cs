@@ -18,7 +18,6 @@ namespace DoctorAppointment.ConsoleUI
 
         public PatientHomePage(string patientId)
         {
-            r_ScheduleService.AppointmentStarted += OnAppointmentStart;
             m_PatientId = patientId;
         }
 
@@ -70,21 +69,15 @@ namespace DoctorAppointment.ConsoleUI
 
         private bool validateUserChoice(string input)
         {
-            int userChoice;
-            bool isvalid = int.TryParse(input, out userChoice);
+            bool isvalid = int.TryParse(input, out int userChoice);
 
-            if (isvalid)
-            {
-                return userChoice > 0 && userChoice <= 3;
-            }
-
-            return false;
+            return isvalid && userChoice > 0 && userChoice <= 3;
         }
 
         private async Task createAppointment()
         {
             AppointmentForm newAppointment = new AppointmentForm(m_PatientId);
-
+            r_ScheduleService.AppointmentStarted += OnAppointmentStart;
             await r_ScheduleService.AddAppointmentAsync(await newAppointment.GetAppointmentFormAsync());
         }
 
@@ -180,17 +173,12 @@ Would you like to filter the doctors by availability Y/N ?");
 
         private bool validateFilterinput(string input)
         {
-            if (input.Length > 1)
-                return false;
-
-            if (input == "Y" || input == "N")
-                return true;
-
-            return false;
+            return input.Length <= 1 && (input == "Y" || input == "N");
         }
 
         private void OnAppointmentStart(object source, AppointmentEventArgs e)
         {
+            r_ScheduleService.AppointmentStarted -= OnAppointmentStart;
             var currentColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Green;
             if (e.PatientId.Equals(m_PatientId))

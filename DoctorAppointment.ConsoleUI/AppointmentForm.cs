@@ -13,7 +13,7 @@ namespace DoctorAppointment.ConsoleUI
     public class AppointmentForm
     {
         private readonly ClinicManager r_ClinicService = ClinicManager.Instance;
-        private readonly TimeSpan r_AppointmentTime = new TimeSpan(0, 0, 10);
+        private readonly TimeSpan r_AppointmentTime = new TimeSpan(0, 0, 15);
 
         public AppointmentForm(string patientId)
         {
@@ -88,13 +88,7 @@ You are in the queue.");
 
         private bool validateFilterinput(string input)
         {
-            if (input.Length > 1)
-                return false;
-
-            if (input == "Y" || input == "N")
-                return true;
-
-            return false;
+            return input.Length <= 1 && (input == "Y" || input == "N");
         }
 
         private bool validateDoctorChooseInput(string input, int range)
